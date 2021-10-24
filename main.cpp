@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <random>
 using namespace std;
 
@@ -7,7 +8,7 @@ using namespace std;
  * Has input validation to make sure the amount >= $0 and amount <= $1000.
  * Returns the amount.
  */
-int getMoney();
+double getMoney();
 
 /*
  * Prompts user for how many coin tosses they would like to simulate.
@@ -24,25 +25,26 @@ int getTosses();
  * storing each adjusted amount in the vector.
  * It returns the vector of the money.
  */
-vector<double> game(int money, int tosses);
+vector<double> game(double money, int tosses);
 
 int main() {
 
-    int money;
+    double money;
     int tosses;
+    vector<double> moneyAmounts;
 
     money = getMoney();
     tosses = getTosses();
 
-    cout << "You will be betting $" + to_string(money) + " for " + to_string(tosses) + " coin tosses." << endl;
+    cout << "You will be betting $" << setprecision(2) << money << " for " << tosses << " coin tosses." << endl;
 
-    game(money, tosses);
+    moneyAmounts = game(money, tosses);
 
     return 0;
 }
 
-int getMoney() {
-    int money;
+double getMoney() {
+    double money;
 
     cout << "How much money would you like to bet? $";
     cin >> money;
@@ -69,41 +71,43 @@ int getTosses() {
     return tosses;
 }
 
-vector<double> game(int money, int tosses) {
+vector<double> game(double money, int tosses) {
     vector<double> moneyAmounts;
     int randomNum;
-    char headsTails;
-    char choice;
+    string headsTails;
+    string choice;
 
     cout << "Welcome!" << endl;
-    cout << "You will be prompted with the current money you have, the toss number you are on, and then whether"
+    cout << "You will be prompted with the toss number you are on, the current money you have, and then whether"
             " you would like to pick heads ('H' or 'h') or tales ('T' or 't')." << endl;
 
     moneyAmounts.push_back(money);
 
     for (int i = 0; i < tosses; ++i) {
-        cout << "Current money: $" + to_string(money) << endl;
-        cout << "Toss number: " + to_string(i + 1) << endl;
+        cout << endl;
+        cout << "Toss number: " << i + 1 << endl;
+        cout << "Current money: $" << setprecision(2) << money << endl;
         cout << "Heads or tales? ";
         cin >> choice;
-        cout << endl;
 
-        while (choice != 'H' && choice != 'h' &&
-            choice != 'T' && choice != 't') {
+        while (choice != "H" && choice != "h" &&
+            choice != "T" && choice != "t") {
             cout << "   Enter a valid character please (H/h or T/t): ";
             cin >> choice;
         }
 
         randomNum = 1 + rand() % 2;
         if (randomNum == 1) {
-            headsTails = 'h';
+            headsTails = "HEADS";
         } else {
-            headsTails = 't';
+            headsTails = "TAILS";
         }
 
-        if (headsTails == 'h') {
-            cout << "The result: HEADS" << endl;
-            if (choice == 'H' || choice == 'h') {
+        cout << endl;
+
+        if (headsTails == "HEADS") {
+            cout << "Coin Toss: HEADS" << endl;
+            if (choice == "H" || choice == "h") {
                 cout << "Well done!" << endl;
                 money *= 2;
             } else {
@@ -111,8 +115,8 @@ vector<double> game(int money, int tosses) {
                 money /= 2;
             }
         } else {
-            cout << "The result: TAILS" << endl;
-            if (choice == 'T' || choice == 't') {
+            cout << "Coin Toss: TAILS" << endl;
+            if (choice == "T" || choice == "t") {
                 cout << "Well done!" << endl;
                 money *= 2;
             } else {
@@ -120,6 +124,7 @@ vector<double> game(int money, int tosses) {
                 money /= 2;
             }
         }
+        cout << "-------------------------" << endl;
         moneyAmounts.push_back(money);
     }
 
