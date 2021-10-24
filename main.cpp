@@ -32,6 +32,7 @@ int main() {
     double money;
     int tosses;
     vector<double> moneyAmounts;
+    string amountsStr;
 
     money = getMoney();
     tosses = getTosses();
@@ -39,8 +40,13 @@ int main() {
     cout << "You will be betting $" << setprecision(2) << money << " for " << tosses << " coin tosses." << endl;
 
     moneyAmounts = game(money, tosses);
+    for (int amount : moneyAmounts) {
+        amountsStr = to_string(moneyAmounts[amount]) + " ";
+    }
 
-    return 0;
+    system(amountsStr.c_str());
+
+    return tosses;
 }
 
 double getMoney() {
