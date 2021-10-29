@@ -1,6 +1,11 @@
 # Module 3, Open-Ended Project: Multiple Programming Languages
+#### _Author: Tate Osborne_
 
 ### Overview
+#### Necessary installations for Python ~
+- `install sys`: This is for Python to interact/gather arguments from CLI
+- `pip3 install matplotlib`: This is for Python to create the graph.
+
 This open-ended project uses two languages: C++ and Python.
 
 There are only two files in the project: `main.cpp` and `graph.py`.
@@ -16,6 +21,8 @@ incorrect guess, the user will have their current amount of money halved.
 It will prompt whether they would like to guess heads or tails, and the user will enter their guess.
 The correct answer will be outputted to the console, and the program gives feedback explaining if they got it
 right or wrong. The console will also show the toss number they are on, and it will show the updated amount of money.
+After the tosses are simulated, the console prints out a summary to the user, saying the amount of money the user won or lost.
+The amount of money, at each toss, is sent to Python via CLI, and Python creates a graph that summarizes the user's game.
 
 ### Files:
 `main.cpp` handles the bulk of the project's contents and the game logic. The amount of money will be stored
@@ -33,12 +40,12 @@ and the y-axis is the money, measured in dollars.
 
 ### Example 
 Suppose the user decided to bet $10 on 4 tosses.
-If the user guessed 'H, T, T, T' and the actual tosses were 'H, H, T, T' then transition function would be as follows:
+If the user guessed `H, T, T, T` and the actual tosses were `H, H, T, T` then transition function would be as follows:
 ```
 toss number:           0      1      2      3      4
 money transition:    $10 -> $20 -> $10 -> $20 -> $40
 ```
 The command called by C++ in command line to call the Python file, with the appropriate arguments, would be:
 ```
-python3 python graph.py 10 20 10 20 40 4
+python3 graph.py 10 20 10 20 40 4
 ```
