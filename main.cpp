@@ -6,7 +6,7 @@ using namespace std;
 
 /*
  * Prompts user for how much money they would like to bet.
- * Has input validation to make sure the amount >= $0 and amount <= $1000.
+ * Has input validation to make sure the amount >= $1 and amount <= $1000.
  * Returns the amount.
  */
 double getMoney();
@@ -62,7 +62,7 @@ double getMoney() {
     cin >> money;
 
     while (!cin || money < 1 || money > 1000) {
-        cout << "Please enter a value between $1 and $1000: $";
+        cout << "   Please enter a value between $1 and $1000: $";
         cin.clear();
         getline(cin, junk);
         cin >> money;
@@ -79,7 +79,7 @@ int getTosses() {
     cin >> tosses;
 
     while (!cin || tosses < 3 || tosses > 20) {
-        cout << "   Please enter a value between 5 and 20: ";
+        cout << "   Please enter a value between 3 and 20: ";
         cin.clear();
         getline(cin, junk);
         cin >> tosses;
