@@ -1,12 +1,12 @@
-# Module 3, Open-Ended Project: Multiple Programming Languages
-#### _Author: Tate Osborne_
+# Coin Toss Graphing
+#### Tate Osborne
 
 ### Overview
 #### Necessary installations for Python ~
 - `install sys`: This is for Python to interact/gather arguments from CLI
 - `pip3 install matplotlib`: This is for Python to create the graph.
 
-This open-ended project uses two languages: C++ and Python.
+This project uses two languages: C++ and Python.
 
 There are only two files in the project: `main.cpp` and `graph.py`.
 
